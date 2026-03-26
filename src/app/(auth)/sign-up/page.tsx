@@ -32,7 +32,7 @@ const page = () => {
     const [usernameMessage, setUsernameMessage] = useState('')
     const [isCheckingUsername, setIsCheckingUsername] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
-
+    //Debouncing is used to delay the API call so that it is not called on every char you type
     const debounced = useDebounceCallback(setUsername, 500);
     // const { toast } = toast() // Removed incorrect usage
     // useToast() hook is not from "sonner", but "sonner" exports toast directly.
@@ -79,8 +79,6 @@ const page = () => {
     }, [username])
 
     const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
-
-
 
         setIsSubmitting(true);
         try {
