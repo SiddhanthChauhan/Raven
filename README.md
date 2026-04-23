@@ -16,6 +16,20 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Environment Variables
+
+Create a `.env.local` file in the project root with:
+
+```bash
+RESEND_API_KEY=your_resend_api_key
+RESEND_FROM_EMAIL="Raven <onboarding@resend.dev>"
+```
+
+Notes:
+
+- In Resend test mode, you can only send emails to verified recipient addresses.
+- To send verification emails to any new user, configure and verify your own sending domain in Resend, then set `RESEND_FROM_EMAIL` to that domain.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

@@ -87,7 +87,7 @@ const page = () => {
             // use sonner toast API
             toast.success(response.data.message);
 
-            router.replace(`/verify/${username}`);
+            router.replace(`/verify/${data.username}`);
 
             setIsSubmitting(false);
         } catch (error) {

@@ -27,7 +27,7 @@ export default function Home() {
             Whisper into the Void.
           </h1>
           <p className="mt-4 text-base md:text-xl text-zinc-400 italic tracking-wide">
-            Raven — Let your words take flight, while your name remains in shadows.
+            Let your words take flight, while your name remains in shadows.
           </p>
         </section>
 
