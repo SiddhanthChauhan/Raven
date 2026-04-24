@@ -1,50 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Raven: AI-Powered Anonymous Social Platform
+
+> Speak freely. Connect securely. Powered by AI.
+
+Raven is a full-stack anonymous messaging platform designed to make honest conversations safe, intelligent, and frictionless.
+
+It blends privacy-first communication with real-time generative AI, allowing users to receive anonymous messages through a unique link while helping senders overcome the "what do I say?" problem with smart, context-aware suggestions.
+
+Built with scalability, security, and performance in mind, Raven is a production-ready system exploring the future of AI-assisted social interaction.
+
+## Features
+
+### AI-Streaming Suggestion Engine
+- Powered by Google Gemini
+- Integrated via Vercel AI SDK
+- Real-time streaming suggestions with low latency
+- Runs on Next.js Edge Runtime for global responsiveness
+
+### Secure Authentication
+- JWT-based authentication with NextAuth.js
+- OTP-based email verification flow
+- Email delivery with Resend + React Email
+- Password hashing with bcryptjs
+
+### Privacy Controls
+- Fully anonymous message handling
+- Toggle to accept/reject incoming messages
+- Debounced username availability checks
+- Dashboard for message management
+
+### Modern UI/UX
+- Next.js 16 + React 19
+- Tailwind CSS 4
+- shadcn/ui + Radix UI
+- Responsive, accessible interface
+
+## Tech Stack
+
+### Frontend
+- Next.js 16 (App Router)
+- React 19
+- TypeScript 5
+- Tailwind CSS 4
+- shadcn/ui + Radix UI
+
+### Backend and Database
+- Next.js Route Handlers (REST APIs)
+- MongoDB
+- Mongoose
+- Zod validation
+
+### Authentication and AI
+- NextAuth.js (JWT strategy)
+- bcryptjs
+- Vercel AI SDK
+- @google/genai (Gemini API)
+- Resend API
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository
+```bash
+git clone https://github.com/SiddhanthChauhan/Raven.git
+cd Raven
+```
 
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Configure environment variables
+Create a `.env.local` file in the project root:
+
+```env
+# Database
+MONGODB_URI=your_mongodb_connection_string
+
+# NextAuth
+NEXTAUTH_SECRET=your_super_secret_string
+NEXTAUTH_URL=http://localhost:3000
+
+# Resend API (email OTP)
+RESEND_API_KEY=your_resend_api_key
+RESEND_FROM_EMAIL=onboarding@resend.dev
+
+# Google Gemini AI
+GOOGLE_API_KEY=your_gemini_api_key
+```
+
+### 4. Run the development server
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-## Environment Variables
+## Architectural Decisions
 
-Create a `.env.local` file in the project root with:
+### Edge Runtime for AI
+The AI suggestion route runs on the Next.js Edge Runtime instead of Node.js:
+- Faster cold starts
+- Lower-latency global streaming
+- Better real-time UX for generated suggestions
 
-```bash
-RESEND_API_KEY=your_resend_api_key
-RESEND_FROM_EMAIL="Raven <onboarding@resend.dev>"
-```
+### JWT over Database Sessions
+- Sessions are managed using JSON Web Tokens
+- Reduces database read/write overhead
+- Improves scalability for high-traffic usage
 
-Notes:
+## Project Highlights
+- Real-time AI streaming UX
+- Secure anonymous communication flow
+- Production-ready full-stack architecture
+- Clean, modular, scalable codebase
 
-- In Resend test mode, you can only send emails to verified recipient addresses.
-- To send verification emails to any new user, configure and verify your own sending domain in Resend, then set `RESEND_FROM_EMAIL` to that domain.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Author
+Siddhanth Chauhan
